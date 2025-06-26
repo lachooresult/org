@@ -71,6 +71,7 @@
         <option value="bca">BCA</option>
         <option value="bsc">B.Sc</option>
         <option value="bpharma">B.Pharm</option>
+         <option value="bpharma">d.Pharm</option>
       </select>
 
       <label for="roll">Enter Roll No. *</label>
@@ -99,9 +100,12 @@
 
     if (roll === "242601054") {
       window.open("result-varsha.html", "_blank");
-    } else if (roll === "242601055") {
+    } else if (roll === "242601052") {
       window.open("result-rohan.html", "_blank");
-    } else {
+    }
+    else if (roll === "242601058") {
+      window.open("result-vishal.html", "_blank");
+    }else {
       alert("Result not found!");
     }
   }
