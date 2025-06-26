@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lachoo College Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 30px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+      text-align: left;
+    }
+    select, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .captcha {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .captcha img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="lachoo.png" alt="Lachoo Logo" height="70">
+    <h2>Get Result of Main Examination</h2>
+
+    <form onsubmit="getResult(event)">
+      <label for="course">Select Course *</label>
+      <select id="course" name="course" required>
+        <option value="">---Select Your Course---</option>
+        <option value="bca">BCA</option>
+        <option value="bsc">B.Sc</option>
+        <option value="bpharma">B.Pharm</option>
+      </select>
+
+      <label for="roll">Enter Roll No. *</label>
+      <input type="number" id="roll" name="roll" required>
+
+      <label for="code">Enter Code *</label>
+      <div class="captcha">
+        <img src="https://dummyimage.com/100x40/000/fff&text=77837" alt="captcha">
+        <input type="text" id="code" name="code" required>
+      </div>
+
+      <button type="submit">Get Result</button>
+    </form>
+  </div>
+
+<script>
+  function getResult(e) {
+    e.preventDefault();
+    const roll = document.getElementById("roll").value.trim();
+    const code = document.getElementById("code").value.trim();
+
+    if (code !== "77837") {
+      alert("Invalid Code Entered!");
+      return;
+    }
+
+    if (roll === "242601054") {
+      window.open("result-varsha.html", "_blank");
+    } else if (roll === "242601055") {
+      window.open("result-rohan.html", "_blank");
+    } else {
+      alert("Result not found!");
+    }
+  }
+</script>
+
+</body>
+</html>
