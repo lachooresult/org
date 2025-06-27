@@ -88,30 +88,46 @@
   </div>
 
 <script>
-  function getResult(e) {
-    e.preventDefault();
-    const roll = document.getElementById("roll").value.trim();
-    const code = document.getElementById("code").value.trim();
+    let generatedCode = "";
 
-    if (code !== "77837") {
-      alert("Invalid Code Entered!");
-      return;
+    function generateCaptcha() {
+      const canvas = document.getElementById("captchaCanvas");
+      const ctx = canvas.getContext("2d");
+      generatedCode = Math.floor(10000 + Math.random() * 90000).toString(); // 5-digit
+
+      // Draw background
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw code
+      ctx.font = "20px Arial";
+      ctx.fillStyle = "#fff";
+      ctx.fillText(generatedCode, 15, 28);
     }
 
-    if (roll === "242601054") {
-      window.open("result-varsha.html", "_blank");
-    } else if (roll === "242601052") {
-      window.open("result-rohan.html", "_blank");
-    }
-    else if (roll === "242601058") {
-      window.open("result-vishal.html", "_blank");
-    }else if (roll === "242601016") {
-      window.open("result-harsh.html", "_blank");
-    }else {
-      alert("Result not found!");
-    }
-  }
-</script>
+    function getResult(e) {
+      e.preventDefault();
+      const roll = document.getElementById("roll").value.trim();
+      const code = document.getElementById("code").value.trim();
 
+      if (code !== generatedCode) {
+        alert("Invalid Code Entered!");
+        generateCaptcha(); // Refresh CAPTCHA
+        return;
+      }
+
+      if (roll === "242601054") {
+        window.open("result-varsha.html", "_blank");
+      } else if (roll === "242601055") {
+        window.open("result-rohan.html", "_blank");
+      } else if (roll === "242601058") {
+        window.open("result-vishal.html", "_blank");
+      } else {
+        alert("Result not found!");
+      }
+    }
+
+    window.onload = generateCaptcha;
+  </script>
 </body>
 </html>
